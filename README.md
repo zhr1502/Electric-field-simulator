@@ -30,7 +30,7 @@ vscode_config中给出了windows和linux下的编译选项及其他配置文件
 
 在linux下的编译命令:
 
-``` g++ draw.cpp -o draw.exe -lGL -lglut ```
+``` g++ draw.cpp -o draw -lGL -lglut ```
 
 请注意，你需要在linux下安装freeglut，对于debian系的linux，使用apt安装即可，其他类型请自行查阅资料。
 
