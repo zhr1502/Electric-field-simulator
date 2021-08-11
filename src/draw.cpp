@@ -1,6 +1,7 @@
 #include<iostream>
 #include<cmath>
 #include "include/GL/glut.h"
+#include "include/GL/freeglut.h"
 using namespace std;
 #define MIN_BROAD_LEFT 2.0/3.0
 float zoom=1.0/0.0,user_zoom=1;
