@@ -1,11 +1,14 @@
 #include<iostream>
 #include<cmath>
+#include<ctime>
 #include "include/GL/glut.h"
 #include "include/GL/freeglut.h"
 using namespace std;
 #define MIN_BROAD_LEFT 2.0/3.0
 float zoom=1.0/0.0,user_zoom=1;
+bool do_redisplay;
 #define TOTAL_zoom (zoom*user_zoom)
+#define abs(x) (x<0?-x:x)
 #include "include/calculator.hpp"
 void reshape(int w, int h){
     glViewport(0, 0, (GLsizei) w, (GLsizei) h);
@@ -56,7 +59,8 @@ void mouse(int button,int state,int x,int y){
         user_zoom/=1.2;
     }
     calc();
-    glutPostRedisplay();
+    if(do_redisplay) glutPostRedisplay();
+    else user_zoom=button==3?user_zoom/1.2:user_zoom*1.2;
     return;
 }
 #endif
@@ -65,7 +69,8 @@ void MouseWheel(int button,int dir,int x,int y){
     if(dir>0) user_zoom*=1.2;
     if(dir<0) user_zoom/=1.2;
     calc();
-    glutPostRedisplay();
+    if(do_redisplay) glutPostRedisplay();
+    else user_zoom=dir>0?user_zoom/1.2:user_zoom*1.2;
     return;
 }
 #endif
